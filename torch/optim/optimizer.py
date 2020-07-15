@@ -33,7 +33,7 @@ class Optimizer(object):
         torch._C._log_api_usage_once("python.optimizer")
         self.defaults = defaults
 
-        if isinstance(params, torch.Tensor):
+        if isinstance(params, torch.Tensor) or not hasattr(params, '__iter__'):
             raise TypeError("params argument given to the optimizer should be "
                             "an iterable of Tensors or dicts, but got " +
                             torch.typename(params))
